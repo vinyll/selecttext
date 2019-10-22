@@ -1,0 +1,61 @@
+<!--
+POC for disabling native browser text selection and using click-to-select for words.
+ -->
+<meta charset=utf-8>
+<p id=paragraph>
+  He was the son of Apollo and, according to the earliest accounts, a mortal woman named Coronis.
+  His mother was killed by Artemis for being unfaithful to Apollo and was laid out on a funeral pyre to be consumed,
+  but Apollo rescued the child, cutting him from Coronis's womb.
+  According to other version Apollo having learned about Coronis betrayal with the mortal Ischys killed her.
+  Before death she revealed Apollo that she was pregnant with his child and he repenting his actions unsuccessfully
+  tried to save her.
+</p>
+
+<script>
+  let selection = []
+  const container = document.querySelector('#paragraph')
+  const words = container.textContent.trim().split(/([\W]+)/)
+  let index = 0
+  update()
+
+  function update() {
+    index = 0
+    container.innerHTML = words.map((w, i) => {
+      const span = `<span
+        index=${index}
+        ${selection.length && selection[0] <= index && index < selection[1] ? `selected` : ''}
+        >${w}</span>`
+      index += w.length
+      return span
+    }).join('')
+
+    document.querySelectorAll('#paragraph span').forEach(span => span.addEventListener('click', (event) => {
+      const span = event.target
+      const index = Number(span.getAttribute('index'))
+      // Clear selection
+      if(index == selection[0]) {
+        selection = []
+        return update()
+      }
+      // Select next words
+      if(!selection.length || index <= selection[0]) {
+        selection[0] = index
+      }
+      selection[1] = index + span.textContent.length - 1
+      return update()
+    }))
+  }
+</script>
+
+<style>
+  #paragraph span {
+    cursor: pointer;
+    user-select: none;
+  }
+  #paragraph span:hover {
+    background-color: yellow;
+  }
+  #paragraph span[selected] {
+    background-color: #dde;
+  }
+</style>
