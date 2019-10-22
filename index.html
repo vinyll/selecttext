@@ -2,6 +2,7 @@
 POC for disabling native browser text selection and using click-to-select for words.
  -->
 <meta charset=utf-8>
+
 <p id=paragraph>
   He was the son of Apollo and, according to the earliest accounts, a mortal woman named Coronis.
   His mother was killed by Artemis for being unfaithful to Apollo and was laid out on a funeral pyre to be consumed,
@@ -11,39 +12,18 @@ POC for disabling native browser text selection and using click-to-select for wo
   tried to save her.
 </p>
 
+<small>Click on words to select them. Click again on the first word you select to clear.</small>
+
+<h2 id=output></h2>
+
+<script src=selecttext.js></script>
 <script>
-  let selection = []
   const container = document.querySelector('#paragraph')
-  const words = container.textContent.trim().split(/([\W]+)/)
-  let index = 0
-  update()
-
-  function update() {
-    index = 0
-    container.innerHTML = words.map((w, i) => {
-      const span = `<span
-        index=${index}
-        ${selection.length && selection[0] <= index && index < selection[1] ? `selected` : ''}
-        >${w}</span>`
-      index += w.length
-      return span
-    }).join('')
-
-    document.querySelectorAll('#paragraph span').forEach(span => span.addEventListener('click', (event) => {
-      const span = event.target
-      const index = Number(span.getAttribute('index'))
-      // Clear selection
-      if(index == selection[0]) {
-        selection = []
-        return update()
-      }
-      // Select next words
-      if(!selection.length || index <= selection[0]) {
-        selection[0] = index
-      }
-      selection[1] = index + span.textContent.length - 1
-      return update()
-    }))
+  const selector = new SelectText(container)
+  selector.onSelect = (range) => {
+    document.querySelector('#output').textContent = range.length
+      ? `Selected text: ${container.textContent.substr(range[0], range[1] - range[0] + 1)}`
+      : ''
   }
 </script>
 
@@ -57,5 +37,17 @@ POC for disabling native browser text selection and using click-to-select for wo
   }
   #paragraph span[selected] {
     background-color: #dde;
+  }
+
+  body {
+    background-color: #eee;
+  }
+  #paragraph {
+    background-color: #fff;
+    padding: 2rem;
+    border: 1px solid #ddd;
+  }
+  small {
+    font-style: italic;
   }
 </style>
