@@ -5,4 +5,4 @@ When using the native browser text selection is not ideal.
 
 This select only full words (not part of words).
 
-See the [basic example file](index.html) for further details.
+See the [basic example file](index.html) for further details and [it's live demo](https://vinyll.github.io/selecttext).
