@@ -1,0 +1,24 @@
+{
+  "name": "@vinyll/selecttext",
+  "version": "0.0.1",
+  "description": "Select text clicking on words",
+  "main": "selecttext.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinyll/selecttext.git"
+  },
+  "keywords": [
+    "browser",
+    "selection",
+    "range"
+  ],
+  "author": "Vincent Agnano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinyll/selecttext/issues"
+  },
+  "homepage": "https://github.com/vinyll/selecttext#readme"
+}
