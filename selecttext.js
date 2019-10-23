@@ -36,10 +36,11 @@ export default class SelectText {
       return span
     }).join('')
 
-    this.container.querySelectorAll('span').forEach(span => span.addEventListener('click', (event) => {
-      const span = event.target
-      const index = Number(span.getAttribute('index'))
-      this.addSelection(index, span.textContent.length)
-    }))
+    Array.from(this.container.querySelectorAll('span')).filter(span => span.textContent.trim()).forEach(span => {
+      span.addEventListener('click', (event) => {
+        const span = event.target
+        this.addSelection(Number(span.getAttribute('index')), span.textContent.length)
+      })
+    })
   }
 }
