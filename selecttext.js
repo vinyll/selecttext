@@ -7,9 +7,13 @@ export default class SelectText {
   }
 
   renderSpan(text, index) {
+    const classes = []
+    if(this.selection.length && this.selection[0] <= index && index < this.selection[1]) classes.push('selected')
+    if(this.selection[0] === index) classes.push('first')
+    if(this.selection[1] === index + text.length - 1) classes.push('last')
     return `<span
       index=${index}
-      class="${this.selection.length && this.selection[0] <= index && index < this.selection[1] ? `selected` : ''}"
+      class="${classes.join(' ')}"
       >${text}</span>`
   }
 
