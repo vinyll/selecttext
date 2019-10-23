@@ -9,7 +9,7 @@ export default class SelectText {
   renderSpan(text, index) {
     return `<span
       index=${index}
-      ${this.selection.length && this.selection[0] <= index && index < this.selection[1] ? `selected` : ''}
+      class="${this.selection.length && this.selection[0] <= index && index < this.selection[1] ? `selected` : ''}"
       >${text}</span>`
   }
 
