@@ -1,4 +1,4 @@
-class SelectText {
+export default class SelectText {
   constructor(container) {
     this.selection = []
     this.container = container

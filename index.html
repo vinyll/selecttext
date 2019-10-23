@@ -16,8 +16,8 @@ POC for disabling native browser text selection and using click-to-select for wo
 
 <h2 id=output></h2>
 
-<script src=selecttext.js></script>
-<script>
+<script type=module>
+  import SelectText from './selecttext.js'
   const container = document.querySelector('#paragraph')
   const selector = new SelectText(container)
   selector.onSelect = (range) => {
