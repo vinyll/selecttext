@@ -28,8 +28,8 @@ export default class SelectText {
 
   selectionChanged(selection) {
     this.selection = selection
-    this.onSelect && this.onSelect(selection)
     this.render()
+    this.onSelect && this.onSelect(selection)
   }
 
   render() {
