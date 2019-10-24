@@ -1,8 +1,9 @@
 export default class SelectText {
   constructor(container) {
+    this.regex = /([0-9A-zÀ-ú]+)/
     this.selection = []
     this.container = container
-    this.words = container.textContent.trim().split(/([\W]+)/)
+    this.words = container.textContent.trim().split(this.regex)
     this.render()
   }
 
@@ -40,7 +41,10 @@ export default class SelectText {
       return span
     }).join('')
 
-    Array.from(this.container.querySelectorAll('span')).filter(span => span.textContent.trim()).forEach(span => {
+    Array.from(this.container.querySelectorAll('span')).filter(span => {
+      const match = span.textContent.match(this.regex)
+      return match && match.index === 0
+    }).forEach(span => {
       span.addEventListener('click', (event) => {
         const span = event.target
         this.addSelection(Number(span.getAttribute('index')), span.textContent.length)
