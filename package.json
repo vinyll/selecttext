@@ -1,6 +1,6 @@
 {
   "name": "@vinyll/selecttext",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Select text clicking on words",
   "main": "selecttext.js",
   "scripts": {

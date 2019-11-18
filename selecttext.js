@@ -1,6 +1,6 @@
 export default class SelectText {
   constructor(container) {
-    this.regex = /([0-9A-zÀ-ú]+)/
+    this.regex = /([0-9A-zÀ-ú@#$%€±°÷≤µ˜∫√ç≈åß∂ƒ©˙∆˚®™£]+)/
     this.selection = []
     this.container = container
     this.words = container.textContent.trim().split(this.regex)
@@ -9,9 +9,9 @@ export default class SelectText {
 
   renderSpan(text, index) {
     const classes = []
-    if(this.selection.length && this.selection[0] <= index && index < this.selection[1]) classes.push('selected')
-    if(this.selection[0] === index) classes.push('first')
-    if(this.selection[1] === index + text.length - 1) classes.push('last')
+    if (this.selection.length && this.selection[0] <= index && index < this.selection[1]) classes.push('selected')
+    if (this.selection[0] === index) classes.push('first')
+    if (this.selection[1] === index + text.length - 1) classes.push('last')
     return `<span
       index=${index}
       class="${classes.join(' ')}"
@@ -19,10 +19,10 @@ export default class SelectText {
   }
 
   addSelection(index, length) {
-    if(index == this.selection[0]) return this.selectionChanged([])
+    if (index == this.selection[0]) return this.selectionChanged([])
     // Select next words
     const selection = [this.selection[0]]
-    if(!this.selection.length || index <= this.selection[0]) selection[0] = index
+    if (!this.selection.length || index <= this.selection[0]) selection[0] = index
     selection[1] = index + length - 1
     this.selectionChanged(selection)
   }
