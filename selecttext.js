@@ -1,6 +1,6 @@
 export default class SelectText {
   constructor(container) {
-    this.regex = /([0-9A-zÀ-ú@#$%€±°÷≤µ˜∫√ç≈åß∂ƒ©˙∆˚®™£]+)/
+    this.regex = /([0-9A-Za-zœ-ŸÀ-ʯΆ-ῼŠšŽžŒ$%€µß∂ƒ]+)/
     this.selection = []
     this.container = container
     this.words = container.textContent.trim().split(this.regex)

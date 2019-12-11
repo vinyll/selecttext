@@ -3,17 +3,25 @@ POC for disabling native browser text selection and using click-to-select for wo
  -->
 <meta charset=utf-8>
 
-<p id=paragraph>
-  He was the son of Apollo and, according to the earliest accounts, a mortal woman named Coronis.
-  His mother was killed by Artemis for being unfaithful to Apollo and was laid out on a funeral pyre to be consumed,
-  but Apollo rescued the child, cutting him from Coronis's womb.
-  According to other version Apollo having learned about Coronis betrayal with the mortal Ischys killed her.
-  Before death she revealed Apollo that she was pregnant with his child and he repenting his actions unsuccessfully
-  tried to save her.<br>
-  Did 50% know how much is $100? It's equivalent to 90€ or £120!
-</p>
+<section id=paragraph>
+  <p>
+    He was the son of Apollo and, according to the earliest accounts, a mortal woman named Coronis.
+    His mother was killed by Artemis for being unfaithful to Apollo and was laid out on a funeral pyre to be consumed,
+    but Apollo rescued the child, cutting him from Coronis's womb.
+    According to other version Apollo having learned about Coronis betrayal with the mortal Ischys killed her.
+    Before death she revealed Apollo that she was pregnant with his child and he repenting his actions unsuccessfully
+    tried to save her.<br>
+    Did 50% know how much is $100? It's equivalent to 90€ or £120!
+  </p>
+  <blockquote>
+    Did you know that « Lætitia, ça fait un nœud ! » would be valid French?
+  </blockquote>
+  <p>some other čhars Ƈan be Ćompliċated</p>
+  <em>This is not written by ÐðµøþålŸ® bit it could¡</em>
+</section>
 
 <small>Click on words to select them. Click again on the first word you select to clear.</small>
+
 
 <h2 id=output></h2>
 
@@ -33,9 +41,11 @@ POC for disabling native browser text selection and using click-to-select for wo
     cursor: pointer;
     user-select: none;
   }
+
   #paragraph span:hover {
     background-color: yellow;
   }
+
   #paragraph span.selected {
     background-color: #dde;
   }
@@ -43,12 +53,15 @@ POC for disabling native browser text selection and using click-to-select for wo
   body {
     background-color: #eee;
   }
+
   #paragraph {
     background-color: #fff;
     padding: 2rem;
     border: 1px solid #ddd;
   }
+
   small {
     font-style: italic;
   }
+
 </style>
