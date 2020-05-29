@@ -1,12 +1,12 @@
 export default class SelectText {
   constructor(container) {
-    this.regex = /([0-9A-Za-zœ-ŸÀ-ʯΆ-ῼŠšŽžŒ$%€µß∂ƒ£]+)/
+    this.regex = /([0-9A-Za-zœ-ŸÀ-ʯΆ-ῼŠšŽžŒ$%€µß∂ƒ£∑®¥øπ∆ßΩ√™¢∞ﬁﬂ∏Ø‰¿Âı◊∫∮∇ℵ∴∵⋯⋮⋱|∠⌢⋄□⌊⌋⌈⌉ℤ]+)/
     this.selection = []
     this.container = container
     this.words = container.textContent.trim().split(this.regex)
     this.render()
   }
-
+˜
   renderSpan(text, index) {
     const classes = []
     if (this.selection.length && this.selection[0] <= index && index < this.selection[1]) classes.push('selected')
