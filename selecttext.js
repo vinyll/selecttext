@@ -6,7 +6,7 @@ export default class SelectText {
     this.words = container.textContent.trim().split(this.regex)
     this.render()
   }
-˜
+
   renderSpan(text, index) {
     const classes = []
     if (this.selection.length && this.selection[0] <= index && index < this.selection[1]) classes.push('selected')
